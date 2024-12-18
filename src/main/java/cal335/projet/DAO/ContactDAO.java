@@ -35,7 +35,7 @@ public class ContactDAO extends GenericDAO<ContactDTO>{
                 int contact_id = results.getInt("id");
                 String nom = results.getString("nom");
                 String prenom = results.getString("prenom");
-                Boolean isFavoris = results.getBoolean("isFavoris");
+                boolean isFavoris = results.getBoolean("isFavoris");
                 List<AdresseDTO> adresseList = new ArrayList<>();
                 String getStatementAdresses = "SELECT * FROM adresse WHERE contact_id = " + contact_id;
                 PreparedStatement preparedStatementAdresse = connection.prepareStatement(getStatementAdresses);
@@ -73,7 +73,7 @@ public class ContactDAO extends GenericDAO<ContactDTO>{
     public ContactDTO trouverParId(Integer id) {
         List<ContactDTO> tousLesContacts = obtenirTousLesContacts();
         for (int i = 0 ; i < tousLesContacts.size(); i++){
-            if (tousLesContacts.get(i).getId_contact() == id){
+            if (tousLesContacts.get(i).getId_contact().equals(id)){
                 return tousLesContacts.get(i);
             }
         }

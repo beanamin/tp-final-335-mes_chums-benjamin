@@ -86,7 +86,7 @@ public class ChumsController implements HttpHandler {
             }
         }
         //recherche à proximité
-        else if(method.equals("GET") && exchange.getRequestURI().getPath().equals("/mes_chums/proxiité")){
+        else if(method.equals("GET") && exchange.getRequestURI().getPath().equals("/mes_chums/proximite")){
             String[] params =  request.split("&");
             int id = -1;
             for(int i = 0; i < params.length; i++){

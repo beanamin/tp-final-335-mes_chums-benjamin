@@ -1,7 +1,5 @@
 package cal335.projet.DTO;
 
-import cal335.projet.Modele.Adresse;
-
 import java.util.List;
 
 public class ContactDTO {
@@ -20,6 +18,14 @@ public class ContactDTO {
 
     public Integer getId_contact() {
         return id_contact;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public List<AdresseDTO> getAdresses() {
