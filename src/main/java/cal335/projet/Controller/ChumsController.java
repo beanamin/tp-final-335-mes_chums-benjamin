@@ -53,30 +53,53 @@ public class ChumsController implements HttpHandler {
         }
         //Remove contact
         else if(method.equals("DELETE") && exchange.getRequestURI().getPath().equals("/mes_chums")){
-            if (request == null){
-
-            }else{
-                String resp = "";
-                resp = objectMapper.writeValueAsString(contactService.obtenirTousLesContacts());
+            String[] params =  request.split("&");
+            int id = -1;
+            for(int i = 0; i < params.length; i++){
+                if (params[i].split("=")[0].equals("id")){
+                    id = Integer.parseInt(params[i].split("=")[1]);
+                }
+            }
+            String resp = "";
+            if (id >= 0){
+                resp = objectMapper.writeValueAsString(contactService.supprimer(id));
                 envoyerReponse(exchange, resp, 200);
+            }else{
+                envoyerReponse(exchange, "Un DELETE a besion de l'id du contact", 400);
             }
         }
-        else if(method.equals("GET") && exchange.getRequestURI().getPath().equals("/mes_chums")){
-            if (request == null){
-
-            }else{
-                String resp = "";
-                resp = objectMapper.writeValueAsString(contactService.obtenirTousLesContacts());
+        //toggle favoris sur un contact
+        else if(method.equals("PATCH") && exchange.getRequestURI().getPath().equals("/mes_chums/favoris")){
+            String[] params =  request.split("&");
+            int id = -1;
+            for(int i = 0; i < params.length; i++){
+                if (params[i].split("=")[0].equals("id")){
+                    id = Integer.parseInt(params[i].split("=")[1]);
+                }
+            }
+            String resp = "";
+            if (id >= 0){
+                resp = objectMapper.writeValueAsString(contactService.toggleFavoris(id));
                 envoyerReponse(exchange, resp, 200);
+            }else{
+                envoyerReponse(exchange, "Un PATCH a besion de l'id du contact", 400);
             }
         }
-        else if(method.equals("GET") && exchange.getRequestURI().getPath().equals("/mes_chums")){
-            if (request == null){
-
-            }else{
-                String resp = "";
-                resp = objectMapper.writeValueAsString(contactService.obtenirTousLesContacts());
+        //recherche à proximité
+        else if(method.equals("GET") && exchange.getRequestURI().getPath().equals("/mes_chums/proxiité")){
+            String[] params =  request.split("&");
+            int id = -1;
+            for(int i = 0; i < params.length; i++){
+                if (params[i].split("=")[0].equals("id")){
+                    id = Integer.parseInt(params[i].split("=")[1]);
+                }
+            }
+            String resp = "";
+            if (id >= 0){
+                resp = objectMapper.writeValueAsString(contactService.rechercheProximite(id));
                 envoyerReponse(exchange, resp, 200);
+            }else{
+                envoyerReponse(exchange, "Une reherche à proximité a besion d'un id", 400);
             }
         }
     }//obtenir tout les contacts, obtenir un contact specifique, mettre un nouveau contact,

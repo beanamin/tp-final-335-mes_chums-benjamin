@@ -9,6 +9,13 @@ public class Contact {
     private boolean isFavoris;
     private List<Adresse> adresses;
 
+    public Contact(String nom, String prenom, boolean isFavoris, List<Adresse> adresses){
+        this.nom = nom;
+        this.prenom = prenom;
+        this.isFavoris = isFavoris;
+        this.adresses = adresses;
+    }
+
     public Integer getId_contact() {
         return id_contact;
     }
@@ -35,6 +42,10 @@ public class Contact {
 
     public String getPrenom() {
         return prenom;
+    }
+
+    public void setId_contact(Integer id_contact) {
+        this.id_contact = id_contact;
     }
 
 

@@ -4,7 +4,7 @@ import cal335.projet.Modele.Coordonnees;
 
 public class CalculateurDistance {
 
-    public static double calculerDistance(Coordonnees adresse1, Coordonnees adresse2) {
+    public double calculerDistance(Coordonnees adresse1, Coordonnees adresse2) {
         final int rayonTerre = 6371; // Rayon de la terre en kilomètres
 
         double latDistance = Math.toRadians(adresse2.getLatitude() - adresse1.getLatitude());

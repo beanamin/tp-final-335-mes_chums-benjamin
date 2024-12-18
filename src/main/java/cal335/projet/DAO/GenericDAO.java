@@ -50,7 +50,7 @@ import java.sql.SQLException;
     public boolean mettreAJour(T objet){
         return false;
     }
-    public boolean trouverParId(Integer id){
-        return false;
+    public T trouverParId(Integer id){
+        return null;
     }
 }
